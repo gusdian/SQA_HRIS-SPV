@@ -17,7 +17,7 @@ public class LoginPage {
 	}
 	
 	@FindBy(name = "username")
-	WebElement inputUsername;
+	WebElement inputEmail;
 	
 	@FindBy(name = "password")
 	WebElement inputPassword;	
@@ -25,11 +25,11 @@ public class LoginPage {
 	@FindBy(css = "#page-container > div > div.login-content > form > div.login-buttons")
 	WebElement btnLogin;
 	
-	@FindBy(xpath = "//*[@id=\"content\"]/h1")
+	@FindBy(css = "#content > div > div.col-lg-12 > div")
 	WebElement txtWelcome;
 	
 	public void submitLogin(String userName, String password) {
-		inputUsername.sendKeys(userName);
+		inputEmail.sendKeys(userName);
 		inputPassword.sendKeys(password);
 		btnLogin.click();
 	}

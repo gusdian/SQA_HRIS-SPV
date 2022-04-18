@@ -11,8 +11,8 @@ public class ConfigurationProperties {
 	@Value("${browser}")
 	private String browser;
 	
-	@Value("${userName}")
-	private String userName;
+	@Value("${email}")
+	private String email;
 	
 	@Value("${password}")
 	private String password;
@@ -24,24 +24,12 @@ public class ConfigurationProperties {
 		return browser;
 	}
 
-	public void setBrowser(String browser) {
-		this.browser = browser;
-	}
-
-	public String getUsername() {
-		return userName;
-	}
-
-	public void setUsername(String userName) {
-		this.userName = userName;
+	public String getEmail() {
+		return email;
 	}
 
 	public String getPassword() {
 		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getTxtWelcome() {
@@ -51,6 +39,8 @@ public class ConfigurationProperties {
 	public void setTxtWelcome(String txtWelcome) {
 		this.txtWelcome = txtWelcome;
 	}
+
+
 	
 }
 
