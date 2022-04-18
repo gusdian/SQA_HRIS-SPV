@@ -25,7 +25,7 @@ public class LoginPage {
 	@FindBy(css = "#page-container > div > div.login-content > form > div.login-buttons")
 	WebElement btnLogin;
 	
-	@FindBy(css = "#content > div > div.col-lg-12 > div")
+	@FindBy(xpath = "//*[@id='content']/h1")
 	WebElement txtWelcome;
 	
 	public void submitLogin(String userName, String password) {

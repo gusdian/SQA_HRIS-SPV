@@ -28,7 +28,7 @@ import io.cucumber.spring.CucumberContextConfiguration;
 
 @CucumberContextConfiguration
 @ContextConfiguration(classes = AutomationFrameworkConfig.class)
-public class TestLogin {
+public class StepDefinition {
 
 	private static WebDriver driver;
 	private LoginPage loginPage;
@@ -57,8 +57,10 @@ public class TestLogin {
 	
 	@AfterAll
 	public static void closeBrowser() {
-		driver.quit();
+		//driver.quit();
 	}
+	
+	//----------------------( Login Page )----------------------//
 	
 	@Given("SPV mengakses url")
 	public void spv_mengakses_url() {
@@ -76,7 +78,7 @@ public class TestLogin {
 	@Then("SPV berhasil login")
 	public void spv_berhasil_login() {
 		//refresh
-		driver.navigate().refresh();
+		//driver.navigate().refresh();
 		tunggu();
 		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTxtWelcome());
 		extentTest.log(LogStatus.PASS, "SPV berhasil login");
@@ -84,7 +86,7 @@ public class TestLogin {
 		
 		public void tunggu() {
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
