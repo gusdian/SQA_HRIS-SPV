@@ -27,6 +27,15 @@ public class LoginPage {
 	
 	@FindBy(xpath = "//*[@id='content']/h1")
 	WebElement txtWelcome;
+
+	@FindBy(xpath = "//*[@id=\"page-container\"]/div/div[1]/div[1]/small")
+	WebElement txtInvalidLogin;
+	
+	public void submitInvalidLogin(String userNamee, String passwordd) {
+		inputEmail.sendKeys(userNamee);
+		inputPassword.sendKeys(passwordd);
+		btnLogin.click();
+	}
 	
 	public void submitLogin(String userName, String password) {
 		inputEmail.sendKeys(userName);
@@ -37,5 +46,18 @@ public class LoginPage {
 	public String getTxtWelcome() {
 		return txtWelcome.getText();
 	}
+	
+	public String getTxtInvalidLogin() {
+		return txtInvalidLogin.getText();
+	}
+	
+	public void tunggu() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}		
 	
 }

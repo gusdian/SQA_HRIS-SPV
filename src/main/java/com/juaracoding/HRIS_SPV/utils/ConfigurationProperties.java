@@ -11,6 +11,15 @@ public class ConfigurationProperties {
 	@Value("${browser}")
 	private String browser;
 	
+	@Value("${emailku}")
+	private String emailku;
+	
+	@Value("${passwordd}")
+	private String passwordd;
+	
+	@Value("${txtInvalidLogin}")
+	private String txtInvalidLogin;
+	
 	@Value("${email}")
 	private String email;
 	
@@ -24,6 +33,18 @@ public class ConfigurationProperties {
 		return browser;
 	}
 
+	public String getEmailku() {
+		return emailku;
+	}
+
+	public String getPasswordd() {
+		return passwordd;
+	}
+
+	public String getTxtInvalidLogin() {
+		return txtInvalidLogin;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -36,9 +57,7 @@ public class ConfigurationProperties {
 		return txtWelcome;
 	}
 
-	public void setTxtWelcome(String txtWelcome) {
-		this.txtWelcome = txtWelcome;
-	}
+	
 
 
 	

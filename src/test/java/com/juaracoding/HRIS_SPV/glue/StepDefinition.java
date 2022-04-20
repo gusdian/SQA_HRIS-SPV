@@ -20,7 +20,6 @@ import com.relevantcodes.extentreports.LogStatus;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -32,9 +31,11 @@ public class StepDefinition {
 
 	private static WebDriver driver;
 	private LoginPage loginPage;
+
 	
 	ExtentTest extentTest;
 	static ExtentReports reports = new ExtentReports("src/main/resources/TestReport.html");
+	
 	
 	@Autowired
 	ConfigurationProperties configurationProperties;
@@ -47,6 +48,7 @@ public class StepDefinition {
 		TestCases[] tests = TestCases.values();
 		extentTest = reports.startTest(tests[Utils.testCount].getTestName());
 		Utils.testCount++;
+		
 	}
 	
 	@After
@@ -57,41 +59,47 @@ public class StepDefinition {
 	
 	@AfterAll
 	public static void closeBrowser() {
-		//driver.quit();
+		driver.quit();
 	}
 	
 	//----------------------( Login Page )----------------------//
-	
 	@Given("SPV mengakses url")
-	public void spv_mengakses_url() {
+	public void spv_akses_url() {
 		driver = DriverSingleton.getDriver();
 		driver.get(Constants.URL);
 		extentTest.log(LogStatus.PASS, "Navigating to "+Constants.URL);
 	}
 	
-	@When("SPV klik login button")
-	public void spv_klik_login_button() {
+	@When("SPV invalid login")
+	public void spv_invalid_login() {
+		loginPage.submitInvalidLogin(configurationProperties.getEmailku(), configurationProperties.getPasswordd());
+		extentTest.log(LogStatus.PASS, "SPV invalid login");
+	}
+	
+	@Then("SPV gagal login")
+	public void spv_gagal_login() {
+		assertEquals(configurationProperties.getTxtInvalidLogin(), loginPage.getTxtInvalidLogin());
+		extentTest.log(LogStatus.PASS, "SPV gagal login");
+	}
+	
+	@When("SPV valid login")
+	public void spv_valid_login() {
 		loginPage.submitLogin(configurationProperties.getEmail(), configurationProperties.getPassword());
-		extentTest.log(LogStatus.PASS, "SPV klik login button");
+		extentTest.log(LogStatus.PASS, "SPV valid login");
 	}
 	
 	@Then("SPV berhasil login")
 	public void spv_berhasil_login() {
-		//refresh
-		//driver.navigate().refresh();
-		tunggu();
 		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTxtWelcome());
 		extentTest.log(LogStatus.PASS, "SPV berhasil login");
+	}    
+	
+    public void tunggu(int detik) {
+		try {
+			Thread.sleep(detik*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-		
-		public void tunggu() {
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}		
-	}
-
-
+}

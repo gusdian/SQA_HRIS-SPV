@@ -1,5 +1,13 @@
-Feature: Customer Login to PT DIKA
-	Scenario: Testing Login SPV
-		Given SPV mengakses url
-		When SPV klik login button
-		Then SPV berhasil login
+Feature: SPV Login to HRIS - PA Employee Upliner
+
+  @LoginInvalid
+  Scenario: Testing Login Upliner Invalid
+  	Given SPV mengakses url
+    When SPV invalid login
+    Then SPV gagal login
+      
+  @LoginValid
+  Scenario: Testing Login Upliner Valid
+    When SPV valid login
+    Then SPV berhasil login
+    
