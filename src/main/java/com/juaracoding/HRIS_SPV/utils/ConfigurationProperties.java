@@ -64,6 +64,18 @@ public class ConfigurationProperties {
 	
 	@Value("${TxtSuccessApprove}")
 	private String TxtSuccessApprove;
+	
+	@Value("${filter3}")
+	private String filter3;
+	
+	@Value("${txtPenilaianPage}")
+	private String txtPenilaianPage;
+	
+	@Value("${filter4}")
+	private String filter4;
+	
+	@Value("${txtPA360Page}")
+	private String txtPA360Page;
 		
 	
 	//----------------------Declaration Getter-----------------------------------
@@ -182,6 +194,30 @@ public class ConfigurationProperties {
 
 	public String getTxtWelcome() {
 		return txtWelcome;
+	}
+
+	public String getFilter3() {
+		return filter3;
+	}
+
+	public void setFilter3(String filter3) {
+		this.filter3 = filter3;
+	}
+
+	public String getTxtPenilaianPage() {
+		return txtPenilaianPage;
+	}
+	
+	public String getFilter4() {
+		return filter4;
+	}
+
+	public void setFilter4(String filter4) {
+		this.filter4 = filter4;
+	}
+	
+	public String getTxtPA360Page() {
+		return txtPA360Page;
 	}
 	
 }

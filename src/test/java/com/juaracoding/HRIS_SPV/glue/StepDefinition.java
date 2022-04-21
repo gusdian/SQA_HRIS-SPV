@@ -9,7 +9,9 @@ import org.springframework.test.context.ContextConfiguration;
 import com.juaracoding.HRIS_SPV.config.AutomationFrameworkConfig;
 import com.juaracoding.HRIS_SPV.drivers.DriverSingleton;
 import com.juaracoding.HRIS_SPV.pages.ApprovalPage;
+import com.juaracoding.HRIS_SPV.pages.IsiPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.LoginPage;
+import com.juaracoding.HRIS_SPV.pages.PA360Page;
 import com.juaracoding.HRIS_SPV.utils.ConfigurationProperties;
 import com.juaracoding.HRIS_SPV.utils.Constants;
 import com.juaracoding.HRIS_SPV.utils.TestCases;
@@ -34,6 +36,8 @@ public class StepDefinition {
 	private static WebDriver driver;
 	private LoginPage loginPage;
 	private ApprovalPage approvalPage;
+	private IsiPenilaianPage isiPenilaianPage;
+	private PA360Page pa360Page;
 	
 	ExtentTest extentTest;
 	static ExtentReports reports = new ExtentReports("src/main/resources/TestReport.html");
@@ -47,6 +51,8 @@ public class StepDefinition {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
 		approvalPage = new ApprovalPage();
+		isiPenilaianPage = new IsiPenilaianPage();
+		pa360Page = new PA360Page();
 		
 		TestCases[] tests = TestCases.values();
 		extentTest = reports.startTest(tests[Utils.testCount].getTestName());
@@ -115,6 +121,37 @@ public class StepDefinition {
 	public void spv_berhasil_approval_target() {
 		assertEquals(configurationProperties.getTxtInvalidLogin(), approvalPage.getTxtApprovalTarget());
 		extentTest.log(LogStatus.PASS, "Spv Berhasil Approval Target");
+	}
+	
+	//----------------------( Isi Penilaian Page )----------------------//
+	
+	@When("SPV Klik Menu Isi Penilaian")
+	public void spv_klik_menu_isi_penilaian() {
+		isiPenilaianPage.MenuPA();
+		tunggu(2);
+		extentTest.log(LogStatus.PASS, "SPV Klik Menu Isi Penilaian");
+	}
+	
+	@Then("SPV Melihat Data")
+	public void spv_melihat_data() {
+		isiPenilaianPage.indexIsiPenilaian(configurationProperties.getFilter3());
+		assertEquals(configurationProperties.getTxtPenilaianPage(), isiPenilaianPage.getTxtPenilaianPage());
+		extentTest.log(LogStatus.PASS, "SPV Melihat Data");
+	}
+	
+	//----------------------( PA360 Page )----------------------//
+	@When("SPV Klik Menu PA 360")
+	public void spv_klik_menu_PA_360() {
+		pa360Page.MenuPA();
+		tunggu(2);
+		extentTest.log(LogStatus.PASS, "SPV Klik Menu PA 360");
+	}
+	
+	@Then("SPV Melihat Data Dan Sesuai")
+	public void spv_melihat_data_dan_sesuai() {
+		pa360Page.indexPA360(configurationProperties.getFilter3());
+		assertEquals(configurationProperties.getTxtPA360Page(), pa360Page.getTxtPA360Page());
+		extentTest.log(LogStatus.PASS, "SPV Melihat Data Dan Sesuai");
 	}
     public void tunggu(int detik) {
 		try {

@@ -54,8 +54,6 @@ public class IsiPenilaianPage {
 		Filter1.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Filter1.sendKeys(filter3);
 		Filter1.sendKeys(Keys.ENTER);
-		ListMenu.click();
-		ListSubMenu.click();
 		tunggu();
 		EditData.get(0).click();
 		tunggu();

@@ -48,8 +48,6 @@ public class PA360Page {
 		Filter1.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Filter1.sendKeys(filter4);
 		Filter1.sendKeys(Keys.ENTER);
-		ListMenu.click();
-		ListSubMenu.click();
 		tunggu();
 	}
 	
