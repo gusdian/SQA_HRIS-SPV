@@ -11,6 +11,7 @@ import com.juaracoding.HRIS_SPV.drivers.DriverSingleton;
 import com.juaracoding.HRIS_SPV.pages.ApprovalPage;
 import com.juaracoding.HRIS_SPV.pages.IsiPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.LoginPage;
+import com.juaracoding.HRIS_SPV.pages.SetTargetPage;
 import com.juaracoding.HRIS_SPV.pages.PA360Page;
 import com.juaracoding.HRIS_SPV.utils.ConfigurationProperties;
 import com.juaracoding.HRIS_SPV.utils.Constants;
@@ -35,6 +36,7 @@ public class StepDefinition {
 
 	private static WebDriver driver;
 	private LoginPage loginPage;
+	private SetTargetPage targetPage;
 	private ApprovalPage approvalPage;
 	private IsiPenilaianPage isiPenilaianPage;
 	private PA360Page pa360Page;
@@ -50,6 +52,7 @@ public class StepDefinition {
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
+		targetPage = new SetTargetPage();
 		approvalPage = new ApprovalPage();
 		isiPenilaianPage = new IsiPenilaianPage();
 		pa360Page = new PA360Page();
@@ -101,6 +104,36 @@ public class StepDefinition {
 		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTxtWelcome());
 		extentTest.log(LogStatus.PASS, "SPV berhasil login");
 	}    
+	
+	//----------------------( Set Target Page )----------------------//
+	
+		@When("SPV mengakses halaman set target")
+	    public void spv_mengakses_halaman_set_target() {
+	    	tunggu(1);
+	    	targetPage.menuPA();
+	    	extentTest.log(LogStatus.PASS, "SPV mengakses halaman set target");
+	    }
+		
+		@Then("SPV set target")
+		public void spv_set_target() {
+			tunggu(1);
+			targetPage.setTarget(configurationProperties.getSrc(), configurationProperties.getTarget(), configurationProperties.getStart(), configurationProperties.getEnd(), configurationProperties.getPersen(), configurationProperties.getPersen2());
+			extentTest.log(LogStatus.PASS, "SPV melakukan set target");
+		}
+		
+		@Then("SPV set objective")
+		public void spv_set_objective() {
+			tunggu(1);
+			targetPage.setObj(configurationProperties.getTarget(), configurationProperties.getPersen(), configurationProperties.getPersen2(), configurationProperties.getDiri(), configurationProperties.getTeam(), configurationProperties.getS(), configurationProperties.getName());
+			extentTest.log(LogStatus.PASS, "SPV melakukan set objective");
+		}
+		
+		@Then("SPV berhasil set target")
+	    public void spv_berhasil_set_target() {
+	    	tunggu(1);
+	    	assertEquals(configurationProperties.getTxtTarget(), targetPage.getTxtTarget());
+	    	extentTest.log(LogStatus.PASS, "Staff Berhasil Mengisi Target");
+	    }
 	
 	//----------------------( Approval Target Page )----------------------//
 	@When("Spv Klik Menu Approval Target")

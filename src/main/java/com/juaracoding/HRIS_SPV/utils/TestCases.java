@@ -4,7 +4,7 @@ public enum TestCases {
 
 	T1("Testing Login Upliner Valid"),
 	T2("Testing Login Upliner Invalid"),
-	T3(" "),
+	T3("Testing Set Target SPV"),
 	T4("Testing SPV Approval Target"),
 	T5("Testing SPV Isi Penilaian"),
 	T6(" "),
