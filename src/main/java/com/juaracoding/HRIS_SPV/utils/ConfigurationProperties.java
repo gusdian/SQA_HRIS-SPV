@@ -76,10 +76,43 @@ public class ConfigurationProperties {
 	
 	@Value("${txtPA360Page}")
 	private String txtPA360Page;
+	
+	@Value("${src}")
+	private String src;
+	
+	@Value("${target}")
+	private String target;
+	
+	@Value("${start}")
+	private String start;
+	
+	@Value("${end}")
+	private String end;
+	
+	@Value("${persen}")
+	private String persen;
+	
+	@Value("${persen2}")
+	private String persen2;
+	
+	@Value("${diri}")
+	private String diri;
+	
+	@Value("${team}")
+	private String team;
+	
+	@Value("${s}")
+	private String s;
+	
+	@Value("${nama}")
+	private String nama;
+	
+	@Value("${txtTarget}")
+	private String txtTarget;
 		
 	
 	//----------------------Declaration Getter-----------------------------------
-
+	
 	public String getBrowser() {
 		return browser;
 	}
@@ -220,5 +253,48 @@ public class ConfigurationProperties {
 		return txtPA360Page;
 	}
 	
+	public String getSrc() {
+		return src;
+	}
+	
+	public String getTarget() {
+		return target;
+	}
+	
+	public String getStart() {
+		return start;
+	}
+	
+	public String getEnd() {
+		return end;
+	}
+
+	public String getTxtTarget() {
+		return txtTarget;
+	}
+	
+	public String getPersen() {
+		return persen;
+	}
+	
+	public String getPersen2() {
+		return persen2;
+	}
+	
+	public String getDiri() {
+		return diri;
+	}
+	
+	public String getNama() {
+		return nama;
+	}
+	
+	public String getS() {
+		return s;
+	}
+	
+	public String getTeam() {
+		return team;
+	}
 }
 
