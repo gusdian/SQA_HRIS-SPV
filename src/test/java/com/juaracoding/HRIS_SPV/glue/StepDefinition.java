@@ -114,6 +114,7 @@ public class StepDefinition {
 	@Then("Spv Berhasil Approval Target")
 	public void spv_berhasil_approval_target() {
 		assertEquals(configurationProperties.getTxtInvalidLogin(), approvalPage.getTxtApprovalTarget());
+		extentTest.log(LogStatus.PASS, "Spv Berhasil Approval Target");
 	}
     public void tunggu(int detik) {
 		try {
