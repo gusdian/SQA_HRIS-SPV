@@ -33,7 +33,7 @@ public class IsiPenilaianPage {
 	@FindBy(css = "#table_filter > label > input")
 	WebElement Filter1;
 	
-	@FindBy(css = "#table > tbody > tr.child > td > ul > li:nth-child(2) > span.dtr-data > a")
+	@FindBy(xpath = "//*[@id='table']/tbody/tr/td/a")
 	List<WebElement> EditData;
 	
 	@FindBy(css = "#content > h1 > a")
@@ -55,7 +55,10 @@ public class IsiPenilaianPage {
 		Filter1.sendKeys(filter3);
 		Filter1.sendKeys(Keys.ENTER);
 		tunggu();
-		EditData.get(0).click();
+		ListMenu.click();
+		ListSubMenu.click();
+		tunggu();
+		EditData.get(1).click();
 		tunggu();
 		Mundur.click();
 	}

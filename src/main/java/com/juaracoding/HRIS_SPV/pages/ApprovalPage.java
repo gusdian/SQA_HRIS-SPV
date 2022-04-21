@@ -143,10 +143,10 @@ public class ApprovalPage {
 		EditData.get(0).click();
 	}
 	
-	public void EditDataApproval(String name, String startDate, String endDate, String weight1, String weight2, String param1, String tar1, String filter2, String param2, String tar2 ) {
+	public void EditDataApproval(String namee, String startDate, String endDate, String weight1, String weight2, String param1, String tar1, String filter2) {
 		tunggu();
 		Name.sendKeys(Keys.chord(Keys.CONTROL+"a"));
-		Name.sendKeys(name);
+		Name.sendKeys(namee);
 		StartDate.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		StartDate.sendKeys(startDate);
 		StartDate.sendKeys(Keys.ENTER);
@@ -182,11 +182,11 @@ public class ApprovalPage {
 		tunggu();
 		Alert alert_box = driver.switchTo().alert();
 		alert_box.accept(); 
-		Parameter2.sendKeys(param2);
-		tunggu();
-		Target2.sendKeys(tar2);
-		tunggu();
-		Submit4.click();
+//		Parameter2.sendKeys(param2);
+//		tunggu();
+//		Target2.sendKeys(tar2);
+//		tunggu();
+//		Submit4.click();
 		scroll();
 		ApproveTarget.click();
 	}

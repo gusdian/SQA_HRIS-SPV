@@ -222,6 +222,7 @@ private WebDriver driver;
 		tunggu();
 		btnRefresh.click();
 		tunggu();
+		pilihAssign.click();
 		pilihAssign.sendKeys(Keys.chord(Keys.CONTROL+"t", team));
 		pilihAssign.sendKeys(team);
 		pilihAssign.sendKeys(Keys.ENTER);
@@ -244,7 +245,7 @@ private WebDriver driver;
 	
 	public void tunggu() {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

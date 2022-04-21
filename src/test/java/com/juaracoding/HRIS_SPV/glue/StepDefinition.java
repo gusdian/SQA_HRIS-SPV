@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.juaracoding.HRIS_SPV.config.AutomationFrameworkConfig;
 import com.juaracoding.HRIS_SPV.drivers.DriverSingleton;
 import com.juaracoding.HRIS_SPV.pages.ApprovalPage;
+import com.juaracoding.HRIS_SPV.pages.CekPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.IsiPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.LoginPage;
 import com.juaracoding.HRIS_SPV.pages.SetTargetPage;
@@ -39,6 +40,7 @@ public class StepDefinition {
 	private SetTargetPage targetPage;
 	private ApprovalPage approvalPage;
 	private IsiPenilaianPage isiPenilaianPage;
+	private CekPenilaianPage cekPenilaianPage;
 	private PA360Page pa360Page;
 	
 	ExtentTest extentTest;
@@ -55,6 +57,7 @@ public class StepDefinition {
 		targetPage = new SetTargetPage();
 		approvalPage = new ApprovalPage();
 		isiPenilaianPage = new IsiPenilaianPage();
+		cekPenilaianPage = new CekPenilaianPage();
 		pa360Page = new PA360Page();
 		
 		TestCases[] tests = TestCases.values();
@@ -124,7 +127,7 @@ public class StepDefinition {
 		@Then("SPV set objective")
 		public void spv_set_objective() {
 			tunggu(1);
-			targetPage.setObj(configurationProperties.getTarget(), configurationProperties.getPersen(), configurationProperties.getPersen2(), configurationProperties.getDiri(), configurationProperties.getTeam(), configurationProperties.getS(), configurationProperties.getName());
+			targetPage.setObj(configurationProperties.getTarget(), configurationProperties.getPersen(), configurationProperties.getPersen2(), configurationProperties.getDiri(), configurationProperties.getTeam(), configurationProperties.getS(), configurationProperties.getNama());
 			extentTest.log(LogStatus.PASS, "SPV melakukan set objective");
 		}
 		
@@ -146,7 +149,7 @@ public class StepDefinition {
 	
 	@Then("Spv Melihat Dan Mengubah Data Jika Diperlukan")
 	public void spv_melihat_dan_mengubah_data_jika_diperlukan() {
-		approvalPage.EditDataApproval(configurationProperties.getName(), configurationProperties.getStartDate(), configurationProperties.getEndDate(), configurationProperties.getWeight1(), configurationProperties.getWeight2(), configurationProperties.getParam1(), configurationProperties.getTar1(), configurationProperties.getFilter2(), configurationProperties.getParam2(), configurationProperties.getTar2());
+		approvalPage.EditDataApproval(configurationProperties.getNamee(), configurationProperties.getStartDate(), configurationProperties.getEndDate(), configurationProperties.getWeight1(), configurationProperties.getWeight2(), configurationProperties.getParam1(), configurationProperties.getTar1(), configurationProperties.getFilter2());
 		extentTest.log(LogStatus.PASS, "Spv Melihat Dan Mengubah Data Jika Diperlukan");
 	}
 	
@@ -171,7 +174,26 @@ public class StepDefinition {
 		assertEquals(configurationProperties.getTxtPenilaianPage(), isiPenilaianPage.getTxtPenilaianPage());
 		extentTest.log(LogStatus.PASS, "SPV Melihat Data");
 	}
+	//----------------------( Cek Penilaian Page )----------------------//
+	@When("SPV Klik Menu Cek Penilaian")
+	public void spv_klik_menu_cek_penilaian() {
+		cekPenilaianPage.MenuPA();
+		tunggu(2);
+		extentTest.log(LogStatus.PASS, "SPV Klik Menu Cek Penilaian");
+	}
 	
+	@And("SPV Cek Penilaian dan Merubah Data Yang Tidak Sesuai")
+	public void spv_cek_penilaian_dan_merubah_data_yang_tidak_sesuai() {
+		cekPenilaianPage.EditPenilaian(configurationProperties.getActualNum1(), configurationProperties.getActualNum2(), configurationProperties.getScore1(), configurationProperties.getScore2(), configurationProperties.getRating1(), configurationProperties.getScore2(), configurationProperties.getText());
+		tunggu(2);
+		extentTest.log(LogStatus.PASS, "SPV Klik Menu Cek Penilaian");
+	}
+	
+	@Then("SPV Berhasil Simpan Penilaian")
+	public void spv_berhasil_simpan_penilaian() {
+		assertEquals(configurationProperties.getTxtBerhasilCekPenilaian(), cekPenilaianPage.getTxtBerhasilCekPenilaiant());
+		extentTest.log(LogStatus.PASS, "SPV Berhasil Simpan Penilaian");
+	}
 	//----------------------( PA360 Page )----------------------//
 	@When("SPV Klik Menu PA 360")
 	public void spv_klik_menu_PA_360() {
