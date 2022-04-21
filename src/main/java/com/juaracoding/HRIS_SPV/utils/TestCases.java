@@ -4,7 +4,11 @@ public enum TestCases {
 
 	T1("Testing Login Upliner Valid"),
 	T2("Testing Login Upliner Invalid"),
-	T3("Testing SPV Approval Target");
+	T3(" "),
+	T4("Testing SPV Approval Target"),
+	T5("Testing SPV Isi Penilaian"),
+	T6(" "),
+	T7("Testing SPV PA360");
 	
 	private String testName;
 	

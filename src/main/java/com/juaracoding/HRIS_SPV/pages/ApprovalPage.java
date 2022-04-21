@@ -2,6 +2,7 @@ package com.juaracoding.HRIS_SPV.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -106,8 +107,8 @@ public class ApprovalPage {
 	@FindBy(css = "#table > tbody > tr > td:nth-child(4) > a")
 	WebElement deleteData;	
 	
-	@FindBy(css = "#content > div:nth-child(8) > div > ul > li:nth-child(2) > a > span.d-sm-block.d-none > i")
-	WebElement NextTarget;
+//	@FindBy(css = "#content > div:nth-child(8) > div > ul > li:nth-child(2) > a > span.d-sm-block.d-none > i")
+//	WebElement NextTarget;
 	
 	@FindBy(id = "Objective_Name")
 	WebElement Parameter2;
@@ -136,6 +137,8 @@ public class ApprovalPage {
 		Filter1.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Filter1.sendKeys(filter1);
 		Filter1.sendKeys(Keys.ENTER);
+		ListMenu.click();
+		ListSubMenu.click();
 		tunggu();
 		EditData.get(0).click();
 	}
@@ -159,27 +162,28 @@ public class ApprovalPage {
 		Mundur1.click();
 		tunggu();
 		Next2.click();
-		Weight1.get(1).sendKeys(weight1);
-		Weight1.get(2).sendKeys(weight2);
+		Weight1.get(0).sendKeys(weight1);
+		tunggu();
+		Weight2.get(1).sendKeys(weight2);
 		Submit2.click();
 		Next3.click();
 		tunggu();
 		Mundur2.click();
 		Next4.click();
+		tunggu();
 		Parameter1.sendKeys(param1);
 		Target1.sendKeys(tar1);
 		Submit3.click();
+		tunggu();
 		scroll();
-		Entries2.click();
-		ListEntries2.get(2).click();
-		Filter2.sendKeys(Keys.chord(Keys.CONTROL+"a"));
-		Filter2.sendKeys(filter2);
-		Filter2.sendKeys(Keys.ENTER);
-		NextTarget.click();
+		deleteData.click();
+		tunggu();
+		Alert alert_box = driver.switchTo().alert();
+		alert_box.accept(); 
+		scroll();
 		Parameter2.sendKeys(param2);
 		Target2.sendKeys(tar2);
 		Submit4.click();
-		deleteData.click();
 		scroll();
 		ApproveTarget.click();
 	}

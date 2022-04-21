@@ -61,7 +61,7 @@ public class StepDefinition {
 	
 	@AfterAll
 	public static void closeBrowser() {
-		driver.quit();
+		//driver.quit();
 	}
 	
 	//----------------------( Login Page )----------------------//

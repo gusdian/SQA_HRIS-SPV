@@ -28,7 +28,7 @@ public class LoginPage {
 	@FindBy(xpath = "//*[@id='content']/h1")
 	WebElement txtWelcome;
 
-	@FindBy(css = "#page-container > div > div.login-header > div.brand > small")
+	@FindBy(xpath = "//*[@id=\"page-container\"]/div/div[1]/div[1]/small")
 	WebElement txtInvalidLogin;
 	
 	public void submitInvalidLogin(String userNamee, String passwordd) {
