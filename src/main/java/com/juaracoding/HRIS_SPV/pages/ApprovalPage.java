@@ -43,10 +43,10 @@ public class ApprovalPage {
 	@FindBy(id = "Temp_Name")
 	WebElement Name;
 	
-	@FindBy(id = "Periode_Start_Date")
+	@FindBy(id = "Period_Start_Date")
 	WebElement StartDate;
 	
-	@FindBy(id = "Periode_End_Date")
+	@FindBy(id = "Period_End_Date")
 	WebElement EndDate;
 	
 	@FindBy(id = "Review_Count")
@@ -137,11 +137,12 @@ public class ApprovalPage {
 		Filter1.sendKeys(filter1);
 		Filter1.sendKeys(Keys.ENTER);
 		tunggu();
-		EditData.get(1).click();
+		EditData.get(0).click();
 	}
 	
 	public void EditDataApproval(String name, String startDate, String endDate, String weight1, String weight2, String param1, String tar1, String filter2, String param2, String tar2 ) {
 		tunggu();
+		Name.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Name.sendKeys(name);
 		StartDate.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		StartDate.sendKeys(startDate);
