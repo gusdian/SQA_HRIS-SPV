@@ -172,7 +172,9 @@ public class ApprovalPage {
 		Next4.click();
 		tunggu();
 		Parameter1.sendKeys(param1);
+		tunggu();
 		Target1.sendKeys(tar1);
+		tunggu();
 		Submit3.click();
 		tunggu();
 		scroll();
@@ -180,9 +182,10 @@ public class ApprovalPage {
 		tunggu();
 		Alert alert_box = driver.switchTo().alert();
 		alert_box.accept(); 
-		scroll();
 		Parameter2.sendKeys(param2);
+		tunggu();
 		Target2.sendKeys(tar2);
+		tunggu();
 		Submit4.click();
 		scroll();
 		ApproveTarget.click();
