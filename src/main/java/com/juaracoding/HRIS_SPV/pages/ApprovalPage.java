@@ -174,11 +174,11 @@ public class ApprovalPage {
 		Filter2.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Filter2.sendKeys(filter2);
 		Filter2.sendKeys(Keys.ENTER);
-		deleteData.click();
 		NextTarget.click();
 		Parameter2.sendKeys(param2);
 		Target2.sendKeys(tar2);
 		Submit4.click();
+		deleteData.click();
 		scroll();
 		ApproveTarget.click();
 	}
