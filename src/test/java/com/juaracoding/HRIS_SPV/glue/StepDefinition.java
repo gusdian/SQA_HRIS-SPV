@@ -51,7 +51,6 @@ public class StepDefinition {
 		TestCases[] tests = TestCases.values();
 		extentTest = reports.startTest(tests[Utils.testCount].getTestName());
 		Utils.testCount++;
-		
 	}
 	
 	@After
@@ -101,11 +100,12 @@ public class StepDefinition {
 	@When("Spv Klik Menu Approval Target")
 		public void spv_klik_menu_approval_target() {
 		approvalPage.MenuPA();
+		tunggu(2);
 		approvalPage.indexApproval(configurationProperties.getFilter1());
 		extentTest.log(LogStatus.PASS, "Spv Klik Menu Approval Target");
 	}
 	
-	@And("Spv Melihat Dan Mengubah Data Jika Diperlukan")
+	@Then("Spv Melihat Dan Mengubah Data Jika Diperlukan")
 	public void spv_melihat_dan_mengubah_data_jika_diperlukan() {
 		approvalPage.EditDataApproval(configurationProperties.getName(), configurationProperties.getStartDate(), configurationProperties.getEndDate(), configurationProperties.getWeight1(), configurationProperties.getWeight2(), configurationProperties.getParam1(), configurationProperties.getTar1(), configurationProperties.getFilter2(), configurationProperties.getParam2(), configurationProperties.getTar2());
 		extentTest.log(LogStatus.PASS, "Spv Melihat Dan Mengubah Data Jika Diperlukan");

@@ -2,8 +2,9 @@ package com.juaracoding.HRIS_SPV.utils;
 
 public enum TestCases {
 
-	T1("Testing Login Downliner Valid"),
-	T2("Testing Login Downliner Invalid");
+	T1("Testing Login Upliner Valid"),
+	T2("Testing Login Upliner Invalid"),
+	T3("Testing SPV Approval Target");
 	
 	private String testName;
 	

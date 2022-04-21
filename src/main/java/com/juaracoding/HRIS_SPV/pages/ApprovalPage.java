@@ -132,7 +132,7 @@ public class ApprovalPage {
 	public void indexApproval(String filter1) {
 		tunggu();
 		Entries1.click();
-		ListEntries1.get(2).click();
+		ListEntries1.get(1).click();
 		Filter1.sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Filter1.sendKeys(filter1);
 		Filter1.sendKeys(Keys.ENTER);
@@ -150,7 +150,7 @@ public class ApprovalPage {
 		EndDate.sendKeys(endDate);
 		EndDate.sendKeys(Keys.ENTER);
 		ReviewCount.click();
-		ListReviewCount.get(3).click();
+		ListReviewCount.get(2).click();
 		scroll();
 		Submit1.click();
 		Next1.click();
