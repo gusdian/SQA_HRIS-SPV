@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.juaracoding.HRIS_SPV.config.AutomationFrameworkConfig;
 import com.juaracoding.HRIS_SPV.drivers.DriverSingleton;
+import com.juaracoding.HRIS_SPV.pages.ApprovalPage;
 import com.juaracoding.HRIS_SPV.pages.LoginPage;
 import com.juaracoding.HRIS_SPV.utils.ConfigurationProperties;
 import com.juaracoding.HRIS_SPV.utils.Constants;
@@ -20,6 +21,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -31,7 +33,7 @@ public class StepDefinition {
 
 	private static WebDriver driver;
 	private LoginPage loginPage;
-
+	private ApprovalPage approvalPage;
 	
 	ExtentTest extentTest;
 	static ExtentReports reports = new ExtentReports("src/main/resources/TestReport.html");
@@ -44,6 +46,7 @@ public class StepDefinition {
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
+		approvalPage = new ApprovalPage();
 		
 		TestCases[] tests = TestCases.values();
 		extentTest = reports.startTest(tests[Utils.testCount].getTestName());
@@ -94,6 +97,24 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "SPV berhasil login");
 	}    
 	
+	//----------------------( Approval Target Page )----------------------//
+	@When("Spv Klik Menu Approval Target")
+		public void spv_klik_menu_approval_target() {
+		approvalPage.MenuPA();
+		approvalPage.indexApproval(configurationProperties.getFilter1());
+		extentTest.log(LogStatus.PASS, "Spv Klik Menu Approval Target");
+	}
+	
+	@And("Spv Melihat Dan Mengubah Data Jika Diperlukan")
+	public void spv_melihat_dan_mengubah_data_jika_diperlukan() {
+		approvalPage.EditDataApproval(configurationProperties.getName(), configurationProperties.getStartDate(), configurationProperties.getEndDate(), configurationProperties.getWeight1(), configurationProperties.getWeight2(), configurationProperties.getParam1(), configurationProperties.getTar1(), configurationProperties.getFilter2(), configurationProperties.getParam2(), configurationProperties.getTar2());
+		extentTest.log(LogStatus.PASS, "Spv Melihat Dan Mengubah Data Jika Diperlukan");
+	}
+	
+	@Then("Spv Berhasil Approval Target")
+	public void spv_berhasil_approval_target() {
+		assertEquals(configurationProperties.getTxtInvalidLogin(), approvalPage.getTxtApprovalTarget());
+	}
     public void tunggu(int detik) {
 		try {
 			Thread.sleep(detik*1000);
