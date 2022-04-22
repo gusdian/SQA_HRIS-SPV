@@ -74,7 +74,7 @@ private WebDriver driver;
 	@FindBy(id = "Actual_Result_Rating")
 	WebElement inputActRat1;
 	
-	@FindBy(id = "f_star_3_350")
+	@FindBy(id = "f_star_3_391")
 	WebElement inputRat1;
 	
 	@FindBy(id = "Actual_Result_Rating")
@@ -163,7 +163,7 @@ private WebDriver driver;
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("window.scrollBy(0,400)");
 		collapseQuantity.click();
-		tunggu(1);
+		tunggu(2);
 		collapseQuantity.click();
 	}
 	
@@ -188,7 +188,7 @@ private WebDriver driver;
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("window.scrollBy(0,300)");
 		collapseQuality.click();
-		tunggu(1);
+		tunggu(2);
 		collapseQuality.click();
 	}
 	
@@ -212,7 +212,7 @@ private WebDriver driver;
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("window.scrollBy(0,300)");
 		collapseAspiration.click();
-		tunggu(1);
+		tunggu(2);
 		collapseAspiration.click();
 	}
 	
