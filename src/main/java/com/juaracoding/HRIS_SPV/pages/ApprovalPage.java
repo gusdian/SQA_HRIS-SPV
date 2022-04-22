@@ -74,7 +74,7 @@ public class ApprovalPage {
 	@FindBy(id = "Weight")
 	List<WebElement> Weight2;
 	
-	@FindBy(css = "#tab-category > div > div > div > form > div.row > div > button")
+	@FindBy(xpath = "//*[@id=\"tab-category\"]/div/div/div/form/div[2]/div/button")
 	WebElement Submit2;
 	
 	@FindBy(css = "#content > h1 > a.btn.btn-success")
@@ -162,9 +162,12 @@ public class ApprovalPage {
 		Mundur1.click();
 		tunggu();
 		Next2.click();
+		Weight1.get(0).sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Weight1.get(0).sendKeys(weight1);
 		tunggu();
+		Weight2.get(1).sendKeys(Keys.chord(Keys.CONTROL+"a"));
 		Weight2.get(1).sendKeys(weight2);
+		tunggu();
 		Submit2.click();
 		Next3.click();
 		tunggu();

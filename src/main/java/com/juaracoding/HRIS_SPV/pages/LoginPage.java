@@ -33,13 +33,19 @@ public class LoginPage {
 	
 	public void submitInvalidLogin(String userNamee, String passwordd) {
 		inputEmail.sendKeys(userNamee);
+		tunggu();
 		inputPassword.sendKeys(passwordd);
+		tunggu();
 		btnLogin.click();
+		tunggu();
 	}
 	
 	public void submitLogin(String userName, String password) {
+		tunggu();
 		inputEmail.sendKeys(userName);
+		tunggu();
 		inputPassword.sendKeys(password);
+		tunggu();
 		btnLogin.click();
 	}
 	
