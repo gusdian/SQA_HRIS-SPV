@@ -110,93 +110,12 @@ public class ConfigurationProperties {
 	@Value("${txtTarget}")
 	private String txtTarget;
 	
-	@Value("${actualNum1}")
-	private String actualNum1;
-
-	@Value("${actualNum2}")
-	private String actualNum2;
 	
-	@Value("${score1}")
-	private String score1;
-	
-	@Value("${score2}")
-	private String score2;
-	
-	@Value("${rating1}")
-	private String rating1;
-	
-	@Value("${rating2}")
-	private String rating2;
-	
-	@Value("${text}")
-	private String text;
-	
-	@Value("${txtBerhasilCekPenilaian}")
-	private String txtBerhasilCekPenilaian;
 	
 		
 	
 	//----------------------Declaration Getter-----------------------------------
 	
-	public String getActualNum1() {
-		return actualNum1;
-	}
-
-	public void setActualNum1(String actualNum1) {
-		this.actualNum1 = actualNum1;
-	}
-
-	public String getActualNum2() {
-		return actualNum2;
-	}
-
-	public void setActualNum2(String actualNum2) {
-		this.actualNum2 = actualNum2;
-	}
-
-	public String getScore1() {
-		return score1;
-	}
-
-	public void setScore1(String score1) {
-		this.score1 = score1;
-	}
-
-	public String getScore2() {
-		return score2;
-	}
-
-	public void setScore2(String score2) {
-		this.score2 = score2;
-	}
-
-	public String getRating1() {
-		return rating1;
-	}
-
-	public void setRating1(String rating1) {
-		this.rating1 = rating1;
-	}
-
-	public String getRating2() {
-		return rating2;
-	}
-
-	public void setRating2(String rating2) {
-		this.rating2 = rating2;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public String getTxtBerhasilCekPenilaian() {
-		return txtBerhasilCekPenilaian;
-	}
 
 	public String getBrowser() {
 		return browser;

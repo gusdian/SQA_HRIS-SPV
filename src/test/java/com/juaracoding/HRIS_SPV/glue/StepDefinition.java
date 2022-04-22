@@ -174,26 +174,7 @@ public class StepDefinition {
 		assertEquals(configurationProperties.getTxtPenilaianPage(), isiPenilaianPage.getTxtPenilaianPage());
 		extentTest.log(LogStatus.PASS, "SPV Melihat Data");
 	}
-	//----------------------( Cek Penilaian Page )----------------------//
-	@When("SPV Klik Menu Cek Penilaian")
-	public void spv_klik_menu_cek_penilaian() {
-		cekPenilaianPage.MenuPA();
-		tunggu(2);
-		extentTest.log(LogStatus.PASS, "SPV Klik Menu Cek Penilaian");
-	}
 	
-	@And("SPV Cek Penilaian dan Merubah Data Yang Tidak Sesuai")
-	public void spv_cek_penilaian_dan_merubah_data_yang_tidak_sesuai() {
-		cekPenilaianPage.EditPenilaian(configurationProperties.getActualNum1(), configurationProperties.getActualNum2(), configurationProperties.getScore1(), configurationProperties.getScore2(), configurationProperties.getRating1(), configurationProperties.getScore2(), configurationProperties.getText());
-		tunggu(2);
-		extentTest.log(LogStatus.PASS, "SPV Klik Menu Cek Penilaian");
-	}
-	
-	@Then("SPV Berhasil Simpan Penilaian")
-	public void spv_berhasil_simpan_penilaian() {
-		assertEquals(configurationProperties.getTxtBerhasilCekPenilaian(), cekPenilaianPage.getTxtBerhasilCekPenilaiant());
-		extentTest.log(LogStatus.PASS, "SPV Berhasil Simpan Penilaian");
-	}
 	//----------------------( PA360 Page )----------------------//
 	@When("SPV Klik Menu PA 360")
 	public void spv_klik_menu_PA_360() {
