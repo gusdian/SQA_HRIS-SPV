@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.juaracoding.HRIS_SPV.config.AutomationFrameworkConfig;
 import com.juaracoding.HRIS_SPV.drivers.DriverSingleton;
 import com.juaracoding.HRIS_SPV.pages.ApprovalPage;
+import com.juaracoding.HRIS_SPV.pages.CekPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.IsiPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.LoginPage;
 import com.juaracoding.HRIS_SPV.pages.SetTargetPage;
@@ -40,6 +41,7 @@ public class StepDefinition {
 	private ApprovalPage approvalPage;
 	private IsiPenilaianPage isiPenilaianPage;
 	private PA360Page pa360Page;
+	private CekPenilaianPage cekPenilaianPage;
 	
 	ExtentTest extentTest;
 	static ExtentReports reports = new ExtentReports("src/main/resources/TestReport.html");
@@ -56,6 +58,7 @@ public class StepDefinition {
 		approvalPage = new ApprovalPage();
 		isiPenilaianPage = new IsiPenilaianPage();
 		pa360Page = new PA360Page();
+		cekPenilaianPage = new CekPenilaianPage();
 		
 		TestCases[] tests = TestCases.values();
 		extentTest = reports.startTest(tests[Utils.testCount].getTestName());
@@ -171,6 +174,157 @@ public class StepDefinition {
 		assertEquals(configurationProperties.getTxtPenilaianPage(), isiPenilaianPage.getTxtPenilaianPage());
 		extentTest.log(LogStatus.PASS, "SPV Melihat Data");
 	}
+	
+	//----------------------( Cek Penilaian Page )----------------------//
+	
+	@When("SPV klik menu Cek Penilaian")
+	public void klik_cek_penilaian() {
+		tunggu(2);
+		cekPenilaianPage.goToMenuCekPenilaian();
+		extentTest.log(LogStatus.PASS, "SPV klik menu Cek Penilaian");
+	}
+	
+    @Then("Menampilkan Data Cek Penilaian")
+	public void tampil_cek_penilaian() {
+    	tunggu(2);
+    	assertEquals(configurationProperties.getTxtCekPenilaian(), cekPenilaianPage.getTxtCekPenilaian());
+    	extentTest.log(LogStatus.PASS, "Menampilkan Data Cek Penilaian");
+    }
+    
+    @When("SPV klik button Action")
+    public void klik_action() {
+    	cekPenilaianPage.goToBtnAction();
+    	extentTest.log(LogStatus.PASS, "SPV klik button Action");
+    }
+    
+    @And("SPV klik Quantity Aspect")
+    public void klik_quantity_aspect() {
+    	tunggu(2);
+    	cekPenilaianPage.collapseQuantityAspect();
+    	extentTest.log(LogStatus.PASS, "SPV klik Quantity Aspect");
+    }
+    
+    @Then("SPV Update Penilaian Quantity Aspect")
+	public void update_penilaian_quantity() {
+    	tunggu(2);
+    	cekPenilaianPage.editQuantityAspect(configurationProperties.getTxtActual1());
+    	extentTest.log(LogStatus.PASS, "SPV Update Penilaian Quantity Aspect");
+    }
+    
+    @And("SPV Cancel Penilaian Quantity Aspect")
+    public void cancel_penilaian_quantity() {
+    	tunggu(2);
+    	cekPenilaianPage.cancelQuantityAspect();
+    	extentTest.log(LogStatus.PASS, "SPV Cancel Penilaian Quantity Aspect");
+    }
+    
+    @When("SPV klik Quality Aspect")
+    public void klik_quality_aspect() {
+    	tunggu(2);
+    	cekPenilaianPage.collapseQualityAspect();
+    	extentTest.log(LogStatus.PASS, "SPV klik Quality Aspect");
+    }
+    
+    @Then("SPV Update Penilaian Quality Aspect")
+    public void update_penilaian_quality() {
+    	tunggu(2);
+    	cekPenilaianPage.editQualityAspect(configurationProperties.getTxtActualRat1());
+    	extentTest.log(LogStatus.PASS, "SPV Update Penilaian Quality Aspect");
+    }
+    
+    @And("SPV Cancel Penilaian Quality Aspect")
+    public void cancel_penilaian_quality() {
+    	tunggu(2);
+    	cekPenilaianPage.cancelQualityAspect();
+    	extentTest.log(LogStatus.PASS, "SPV Cancel Penilaian Quality Aspect");
+    }
+    
+    @When("SPV klik Aspiration")
+    public void klik_aspiration() {
+    	tunggu(2);
+    	cekPenilaianPage.collapseAspiration();
+    	extentTest.log(LogStatus.PASS, "SPV klik Aspiration");
+    }
+    
+    @Then("SPV Update Penilaian Aspiration")
+    public void update_penilaian_aspiration() {
+    	tunggu(2);
+    	cekPenilaianPage.editAspiration(configurationProperties.getTxtAspiration());
+    	extentTest.log(LogStatus.PASS, "SPV Update Penilaian Aspiration");
+    }
+    
+    @And("SPV Cancel Penilaian Aspiration")
+    public void cancel_penilaian_aspiration() {
+    	tunggu(2);
+    	cekPenilaianPage.cancelAspiration();
+    	extentTest.log(LogStatus.PASS, "SPV Cancel Penilaian Aspiration");
+    }
+
+    @When("SPV klik Final Rating")
+    public void klik_final_rating() {
+    	tunggu(2);
+    	cekPenilaianPage.collapseFinalRating();
+    	extentTest.log(LogStatus.FAIL, "SPV klik Final Rating");
+    }
+    
+    @Then("SPV Simpan Data Penilaian")
+    public void klik_simpan_data_penilaian() {
+    	tunggu(2);
+    	cekPenilaianPage.simpanDataPenilaian();
+    	extentTest.log(LogStatus.PASS, "SPV Simpan Data Penilaian");
+    }
+    
+    @And("Menampilkan notifikasi Berhasil! dan Data tersimpan")
+    public void tampil_data_cek_penilaian() {
+    	tunggu(3);
+    	assertEquals(configurationProperties.getTxtCekPenilaianBerhasil(), cekPenilaianPage.getTxtBerhasil());
+    	extentTest.log(LogStatus.FAIL, "Menampilkan notifikasi Berhasil! dan Data tersimpan");
+    }
+    
+    @When("SPV klik Next Page and Previous Page")
+    public void klik_next_page_cek_penilaian() {
+    	cekPenilaianPage.PagingCekPenilaian();
+    	extentTest.log(LogStatus.PASS, "SPV klik Next Page and Previous Page");
+    }
+    
+    @And("SPV klik Show Entries")
+    public void klik_show_cek_penilaian() {
+    	driver.navigate().refresh();
+    	tunggu(2);
+    	cekPenilaianPage.ShowPageCekPenilaian();
+    	extentTest.log(LogStatus.PASS, "SPV klik Show Entries");
+    }
+    
+	@Then("Menampilkan data Cek Penilaian sesuai banyaknya data yang dipilih")
+	public void tampil_show_entries_cek_penilaian() {
+		extentTest.log(LogStatus.PASS, "Menampilkan data Cek Penilaian sesuai banyaknya data yang dipilih");
+	}
+	
+	@When("SPV klik sorting pada Tabel Detail")
+	public void klik_sorting_cek_penilaian() {
+		cekPenilaianPage.SortCekPenilaian();
+		extentTest.log(LogStatus.PASS, "SPV klik sorting pada Tabel Detail");
+	}
+	
+	@Then("Menampilkan data Cek Penilaian secara ascending")
+	public void tampil_sorting_cek_penilaian() {
+		tunggu(2);
+		extentTest.log(LogStatus.PASS, "Menampilkan data Cek Penilaian secara ascending");
+	}
+	
+	@When("SPV search data")
+	public void search_cek_penilaian() {
+		tunggu(2);
+		cekPenilaianPage.SearchCekPenilaian(configurationProperties.getSearchCekPenilaian());
+		extentTest.log(LogStatus.PASS, "SPV search data");
+	}
+	
+	@Then("Menampilkan data yang dicari")
+	public void tampil_search_cek_penilaian() {
+		tunggu(2);
+		extentTest.log(LogStatus.FAIL, "Menampilkan data yang dicari");
+	}
+	
 	
 	//----------------------( PA360 Page )----------------------//
 	@When("SPV Klik Menu PA 360")

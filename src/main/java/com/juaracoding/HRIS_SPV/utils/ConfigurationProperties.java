@@ -110,7 +110,29 @@ public class ConfigurationProperties {
 	@Value("${txtTarget}")
 	private String txtTarget;
 	
+	@Value("${txtCekPenilaian}")
+	private String txtCekPenilaian;
 	
+	@Value("${txtActual1}")
+	private String txtActual1;
+	
+	@Value("${txtActual2}")
+	private String txtActual2;
+	
+	@Value("${txtActualRat1}")
+	private String txtActualRat1;
+	
+	@Value("${txtActualRat2}")
+	private String txtActualRat2;
+	
+	@Value("${txtAspiration}")
+	private String txtAspiration;
+	
+	@Value("${txtCekPenilaianBerhasil}")
+	private String txtCekPenilaianBerhasil;
+	
+	@Value("${searchCekPenilaian}")
+	private String searchCekPenilaian;
 	
 		
 	
@@ -300,5 +322,38 @@ public class ConfigurationProperties {
 	public String getTeam() {
 		return team;
 	}
+	
+	public String getTxtCekPenilaian() {
+		return txtCekPenilaian;
+	}
+
+	public String getTxtActual1() {
+		return txtActual1;
+	}
+
+	public String getTxtActual2() {
+		return txtActual2;
+	}
+
+	public String getTxtActualRat1() {
+		return txtActualRat1;
+	}
+
+	public String getTxtActualRat2() {
+		return txtActualRat2;
+	}
+
+	public String getTxtAspiration() {
+		return txtAspiration;
+	}
+
+	public String getTxtCekPenilaianBerhasil() {
+		return txtCekPenilaianBerhasil;
+	}
+
+	public String getSearchCekPenilaian() {
+		return searchCekPenilaian;
+	}
+	
 }
 
