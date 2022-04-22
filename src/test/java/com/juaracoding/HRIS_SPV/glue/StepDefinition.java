@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import com.juaracoding.HRIS_SPV.config.AutomationFrameworkConfig;
 import com.juaracoding.HRIS_SPV.drivers.DriverSingleton;
 import com.juaracoding.HRIS_SPV.pages.ApprovalPage;
-import com.juaracoding.HRIS_SPV.pages.CekPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.IsiPenilaianPage;
 import com.juaracoding.HRIS_SPV.pages.LoginPage;
 import com.juaracoding.HRIS_SPV.pages.SetTargetPage;
@@ -40,7 +39,6 @@ public class StepDefinition {
 	private SetTargetPage targetPage;
 	private ApprovalPage approvalPage;
 	private IsiPenilaianPage isiPenilaianPage;
-	private CekPenilaianPage cekPenilaianPage;
 	private PA360Page pa360Page;
 	
 	ExtentTest extentTest;
@@ -57,7 +55,6 @@ public class StepDefinition {
 		targetPage = new SetTargetPage();
 		approvalPage = new ApprovalPage();
 		isiPenilaianPage = new IsiPenilaianPage();
-		cekPenilaianPage = new CekPenilaianPage();
 		pa360Page = new PA360Page();
 		
 		TestCases[] tests = TestCases.values();
