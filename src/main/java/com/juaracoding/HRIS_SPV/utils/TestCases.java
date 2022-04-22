@@ -7,7 +7,7 @@ public enum TestCases {
 	T3("Testing Set Target SPV"),
 	T4("Testing SPV Approval Target"),
 	T5("Testing SPV Isi Penilaian"),
-	T6(" "),
+	T6("Testing SPV Cek Penilaian"),
 	T7("Testing SPV PA360");
 	
 	private String testName;
